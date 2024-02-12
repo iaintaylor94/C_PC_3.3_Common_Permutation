@@ -43,13 +43,12 @@ int main(int argc, char *argv[]) {
   char str1 [kMaxStringLength], str2 [kMaxStringLength];
   
   while (getStrings(str1, str2)) {
-    printf ("str1 : %s\nstr2 : %s\n\n", str1, str2);
-
+    printf ("str1 : %s\nstr2 : %s\n", str1, str2);
     getNumChars(str1, str2);
-    printNumChars(gStr1Chars, gStr2Chars);
-
+    //printNumChars(gStr1Chars, gStr2Chars);
     getPermutation(gStr1Chars, gStr2Chars);
     printPermutation (gPermutation);
+    printf ("\n");
   }
 
 
@@ -96,13 +95,10 @@ void getNumChars (char *str1, char *str2) {
   }
 }
 void printNumChars (int *str1, int *str2) {
-  printf ("str1:     str2:\n");
-  printf ("char num  char num\n");
-  printf ("---- ---  ---- ---\n");
+  printf ("char str1 str2 min\n");
+  printf ("---- ---- ---- ---\n");
   for (int i = 0; i < kNumLettersInAlphabet; i++) {
-    printf ("%4c %3d", 'a' + i, str1[i]);
-    printf ("  ");
-    printf ("%4c %3d\n", 'a' + i, str2[i]);
+    printf ("%4c %4d %4d %3d\n", 'a' + i, str1[i], str2[i], str1[i] < str2[i] ? str1[i] : str2[i]);
   }
   printf ("\n");
 }
